@@ -9,7 +9,12 @@ var express    = require('express'),
 	//host       = process.env.VCAP_APP_HOST;
 
 // support urlencoded and json bodies
-app.use(bodyParser());
+// app.use(bodyParser());  // Geary Original code
+// parse application/x-www-form-urlencoded - Geary New Code  
+app.use(bodyParser.urlencoded({ extended: false }))  
+  
+// parse application/json - Geary New Code
+app.use(bodyParser.json())  
 
 // default database config
 var db_config = {
